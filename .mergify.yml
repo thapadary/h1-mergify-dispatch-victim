@@ -1,0 +1,8 @@
+pull_request_rules:
+  - name: h1-base-control-only
+    conditions:
+      - label = h1-base-control
+    actions:
+      label:
+        add:
+          - h1-base-control-seen
