@@ -1,8 +1,12 @@
 pull_request_rules:
-  - name: h1-base-control-only
+  - name: h1-unmerged-config-must-not-dispatch
     conditions:
-      - label = h1-base-control
+      - -draft
     actions:
-      label:
-        add:
-          - h1-base-control-seen
+      github_actions:
+        workflow:
+          dispatch:
+            - workflow: h1-dispatch-oracle.yml
+              ref: main
+              inputs:
+                marker: "{{ title }}"
