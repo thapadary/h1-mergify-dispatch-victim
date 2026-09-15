@@ -1,0 +1,18 @@
+name: H1 Dispatch Oracle
+
+on:
+  workflow_dispatch:
+    inputs:
+      marker:
+        description: Harmless owned-repository dispatch marker
+        required: false
+        type: string
+
+jobs:
+  record-dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record harmless marker
+        env:
+          MARKER: ${{ inputs.marker }}
+        run: printf 'marker-length=%s\n' "${#MARKER}"
